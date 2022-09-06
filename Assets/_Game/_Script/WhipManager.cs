@@ -4,15 +4,61 @@ using UnityEngine;
 
 public class WhipManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 direction;
+    [SerializeField] private LineRenderer lineRenderer;
+    private bool hasInput = false;
+    [SerializeField] private float whipTime = 1.5f;
+    private float timer = 0;
+
+    private void Update()
     {
-        
+        GetInput();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GetInput()
     {
-        
+        if (hasInput)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                hasInput = false;
+                lineRenderer.enabled = false;
+            }
+            return;
+        }
+
+
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            float x = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
+            direction = new Vector2(x, 0);
+            hasInput = true;
+        }
+        else if (Input.GetAxis("Vertical") != 0) //only 1 input at a time?
+        {
+            float y = Input.GetAxis("Vertical") > 0 ? 1 : -1;
+            direction = new Vector2(0, y);
+            hasInput = true;
+        }
+
+        if (hasInput)
+        {
+            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction);
+            Debug.DrawLine(transform.position, transform.position + (Vector3)direction , Color.red, 5);
+            if (raycastHit.collider != null)
+            {
+                Debug.Log(raycastHit.collider.name);
+
+                //from collider call interaction script <---------------------
+
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, raycastHit.transform.position);
+                lineRenderer.enabled = true;
+            }
+            timer = whipTime;
+        }
+
     }
+
 }
