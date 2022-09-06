@@ -27,6 +27,7 @@ public class WhipManager : MonoBehaviour
 
             if (timer <= 0)
             {
+                WhipHit();
                 hasInput = false;
                 lineRenderer.enabled = false;
             }
@@ -55,7 +56,6 @@ public class WhipManager : MonoBehaviour
             {
                 Debug.Log(raycastHit.collider.name);
 
-                //from collider call interaction script <---------------------
                 targetPos = raycastHit.transform.position;
                 lineRenderer.SetPosition(0, transform.position);
                 lineRenderer.SetPosition(1, transform.position);
@@ -69,6 +69,7 @@ public class WhipManager : MonoBehaviour
     private void WhipHit()
     {
 
+        //from collider call interaction script <---------------------
     }
 
 }
