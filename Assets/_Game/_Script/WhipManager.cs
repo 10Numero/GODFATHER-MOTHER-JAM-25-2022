@@ -11,6 +11,7 @@ public class WhipManager : MonoBehaviour
     private float timer = 0;
 
     private Vector2 targetPos;
+    private RaycastHit2D _raycastHit;
 
     private void Update()
     {
@@ -23,7 +24,7 @@ public class WhipManager : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            lineRenderer.SetPosition(1, Vector3.Lerp(targetPos,transform.position , timer / whipTime));
+            lineRenderer.SetPosition(1, Vector3.Lerp(targetPos, transform.position, timer / whipTime));
 
             if (timer <= 0)
             {
@@ -50,13 +51,12 @@ public class WhipManager : MonoBehaviour
 
         if (hasInput)
         {
-            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction);
-            Debug.DrawLine(transform.position, transform.position + (Vector3)direction , Color.red, 5);
-            if (raycastHit.collider != null)
+            _raycastHit = Physics2D.Raycast(transform.position, direction);
+            Debug.DrawLine(transform.position, transform.position + (Vector3)direction, Color.red, 5);
+            if (_raycastHit.collider != null)
             {
-                Debug.Log(raycastHit.collider.name);
-
-                targetPos = raycastHit.transform.position;
+                Debug.Log(_raycastHit.collider.name);
+                targetPos = _raycastHit.transform.position;
                 lineRenderer.SetPosition(0, transform.position);
                 lineRenderer.SetPosition(1, transform.position);
                 lineRenderer.enabled = true;
@@ -68,8 +68,12 @@ public class WhipManager : MonoBehaviour
 
     private void WhipHit()
     {
+        var cube = _raycastHit.collider.transform.gameObject.GetComponent<ACube>();
 
-        //from collider call interaction script <---------------------
+        if (cube)
+        {
+            cube.Action();
+        }
     }
 
 }
