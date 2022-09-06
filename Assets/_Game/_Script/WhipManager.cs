@@ -7,8 +7,10 @@ public class WhipManager : MonoBehaviour
     private Vector2 direction;
     [SerializeField] private LineRenderer lineRenderer;
     private bool hasInput = false;
-    [SerializeField] private float whipTime = 1.5f;
+    [SerializeField] private float whipTime = 1f;
     private float timer = 0;
+
+    private Vector2 targetPos;
 
     private void Update()
     {
@@ -20,6 +22,9 @@ public class WhipManager : MonoBehaviour
         if (hasInput)
         {
             timer -= Time.deltaTime;
+
+            lineRenderer.SetPosition(1, Vector3.Lerp(targetPos,transform.position , timer / whipTime));
+
             if (timer <= 0)
             {
                 hasInput = false;
@@ -51,13 +56,18 @@ public class WhipManager : MonoBehaviour
                 Debug.Log(raycastHit.collider.name);
 
                 //from collider call interaction script <---------------------
-
+                targetPos = raycastHit.transform.position;
                 lineRenderer.SetPosition(0, transform.position);
-                lineRenderer.SetPosition(1, raycastHit.transform.position);
+                lineRenderer.SetPosition(1, transform.position);
                 lineRenderer.enabled = true;
             }
             timer = whipTime;
         }
+
+    }
+
+    private void WhipHit()
+    {
 
     }
 

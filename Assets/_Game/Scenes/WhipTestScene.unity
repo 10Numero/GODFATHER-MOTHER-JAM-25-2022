@@ -733,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1539516720}
-  whipTime: 1.5
+  whipTime: 1
 --- !u!120 &1539516720
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -795,12 +795,12 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.075
-        inSlope: -0.48861605
-        outSlope: -0.48861605
+        value: 0.125
+        inSlope: -0.21443965
+        outSlope: -0.21443965
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.28140706
+        inWeight: 0.2914573
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
