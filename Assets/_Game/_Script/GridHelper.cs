@@ -63,15 +63,12 @@ public class GridHelper : MonoBehaviour
                 // Got decimal, floor & ceil are enough to get 2 dif pos next to each other
                 if (!int.TryParse(pos.x.ToString(CultureInfo.InvariantCulture), out var value))
                     return (new Vector3(Mathf.Floor(pos.x), Mathf.Floor(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
-
-                Debug.Log("a");
+                
                 
                 if (!int.TryParse(pos.y.ToString(CultureInfo.InvariantCulture), out var valueZ))
                     return (new Vector3(Mathf.Floor(pos.x), Mathf.Floor(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
 
-                
-                Debug.Log("b");
-                
+ 
                 // Got int, have to split the pos myself
                 return (pos, new Vector3(!IsEqualX(pos.x) ? pos.x + 1 : pos.x, !IsEqualY(pos.y) ? pos.y + 1 : pos.y, pos.y));
                 
@@ -84,7 +81,7 @@ public class GridHelper : MonoBehaviour
                         : player.transform.position.y,
                     player.transform.position.z);
 
-                return (pos, player.position);
+                return (player.position, pos);
             
             default:
                 throw new ArgumentOutOfRangeException(nameof(__boxType), __boxType, null);
