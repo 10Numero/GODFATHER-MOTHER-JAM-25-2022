@@ -19,6 +19,6 @@ public class CameraScroll : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        cameraPos.position = Vector2.Lerp(startPos.position, endPos.position, posOverTime.Evaluate(timer /animTime));
+        cameraPos.position = Vector3.Lerp(startPos.position, endPos.position, posOverTime.Evaluate(timer /animTime));
     }
 }

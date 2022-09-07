@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    static Player instance = null;
+    public static Player Instance { get; private set; }
 
-    public static Player Instance
+    void Awake()
     {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<Player>();
-            }
-            return instance;
-        }
+        Instance = this;
     }
 }
