@@ -235,18 +235,18 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2.8301876
-      outSlope: 2.8301876
+      time: 0.9916687
+      value: 1.0094337
+      inSlope: 0.08708292
+      outSlope: 0.08708292
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.050000012
+      inWeight: 0.10833335
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animTime: 34
+  animTime: 10
 --- !u!1 &1064168021
 GameObject:
   m_ObjectHideFlags: 0
