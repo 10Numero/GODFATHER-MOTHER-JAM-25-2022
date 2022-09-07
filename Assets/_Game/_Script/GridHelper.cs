@@ -14,12 +14,6 @@ public class GridHelper : MonoBehaviour
 
     private List<ACube> _cubes = new();
     
-    public enum BoxType
-    {
-        Sugar,
-        Four,
-        Jelly
-    };
 
     
     private void Awake()
@@ -33,7 +27,7 @@ public class GridHelper : MonoBehaviour
     }
 
     [Button]
-    public void TestPosition(BoxType __boxType, Transform __hookedBox)
+    public void TestPosition(ACube.eCubeType __boxType, Transform __hookedBox)
     {
         var positions = GetEndPosition(__boxType, __hookedBox);
         player.position = positions.Item1;
@@ -41,13 +35,13 @@ public class GridHelper : MonoBehaviour
     }
 
     // Player pos, Cube pos
-    public (Vector3, Vector3) GetEndPosition(BoxType __boxType, Transform __hookedBox)
+    public (Vector3, Vector3) GetEndPosition(ACube.eCubeType __boxType, Transform __hookedBox)
     {
         var pos = Vector3.zero;
         
         switch (__boxType)
         {
-            case BoxType.Four:
+            case ACube.eCubeType.Oven:
                 
                 pos = new Vector3(
                     IsEqualZ(__hookedBox.position.z) ? (!IsOnTheLeft(player.position - __hookedBox.position) ? __hookedBox.transform.position.x - 1 : __hookedBox.transform.position.x + 1)  
@@ -58,7 +52,7 @@ public class GridHelper : MonoBehaviour
                 
                 return (pos, __hookedBox.position);
                 
-            case BoxType.Jelly:
+            case ACube.eCubeType.Jelly:
                 
                 // Get mid positions for each targets
                 pos = new Vector3(
@@ -76,7 +70,7 @@ public class GridHelper : MonoBehaviour
                 // Got int, have to split the pos myself
                 return (pos, new Vector3(!IsEqualX(pos.x) ? pos.x + 1 : pos.x, pos.y, !IsEqualZ(pos.z) ? pos.z + 1 : pos.z));
                 
-            case BoxType.Sugar:
+            case ACube.eCubeType.Sugar:
 
                 pos = new Vector3(
                     IsEqualZ(__hookedBox.position.z) ? (!IsOnTheLeft(__hookedBox.position - player.position) ? player.transform.position.x - 1 : player.transform.position.x + 1)  

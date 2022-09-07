@@ -4,8 +4,16 @@ using UnityEngine;
 
 public abstract class ACube : MonoBehaviour
 {
+    public enum eCubeType
+    {
+        Oven,
+        Sugar,
+        Jelly,
+        Caramel
+    }
 
-    void Awake()
+    public eCubeType cubeType;
+    void Start()
     { 
         GridHelper.Instance.Register(this);
     }
