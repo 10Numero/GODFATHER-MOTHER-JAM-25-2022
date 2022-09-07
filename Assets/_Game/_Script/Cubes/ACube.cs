@@ -13,6 +13,9 @@ public abstract class ACube : MonoBehaviour
     }
 
     public eCubeType cubeType;
+
+    public float travelTime;
+
     void Start()
     { 
         GridHelper.Instance.Register(this);

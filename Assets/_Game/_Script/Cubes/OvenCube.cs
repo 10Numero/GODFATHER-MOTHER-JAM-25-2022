@@ -5,8 +5,11 @@ using Sirenix.OdinInspector;
 
 public class OvenCube : ACube
 {
-    [SerializeField] float travelTime;
-    
+    private void Start()
+    {
+        cubeType = eCubeType.Oven;
+    }
+
     public override void Action()
     {
         MoveToPosition();
@@ -20,7 +23,7 @@ public class OvenCube : ACube
         IEnumerator Animation()
         {
             Vector3 startPos = Player.Instance.transform.position;
-            var endPos = GridHelper.Instance.GetEndPosition(ACube.eCubeType.Oven, transform).Item1;
+            var endPos = GridHelper.Instance.GetEndPosition(cubeType, transform).Item1;
             float elapsedTime = 0;
 
             while (elapsedTime < travelTime)
