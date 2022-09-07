@@ -65,21 +65,14 @@ public class GridHelper : MonoBehaviour
                     IsEqualZ(__hookedBox.position.x) ? __hookedBox.position.x : (__hookedBox.transform.position.x + player.transform.position.x) / 2, 
                     player.position.y, 
                     IsEqualX(__hookedBox.position.z) ? __hookedBox.position.z : (__hookedBox.transform.position.z + player.transform.position.z) / 2);
-                
-                Debug.Log("pos x : " + pos.x);
-                
+
                 // Got decimal, floor & ceil are enough to get 2 dif pos next to each other
                 if (!int.TryParse(pos.x.ToString(CultureInfo.InvariantCulture), out var value))
-                { 
-                    Debug.Log("std A : " + pos);
                     return (new Vector3(Mathf.Floor(pos.x), pos.y, Mathf.Floor(pos.z)), new Vector3(Mathf.CeilToInt(pos.x), pos.y, Mathf.CeilToInt(pos.z)));
-                }
 
                 if (!int.TryParse(pos.z.ToString(CultureInfo.InvariantCulture), out var valueZ))
                     return (new Vector3(Mathf.Floor(pos.x), pos.y, Mathf.Floor(pos.z)), new Vector3(Mathf.CeilToInt(pos.x), pos.y, Mathf.CeilToInt(pos.z)));
-                
-                Debug.Log("std C : " + pos);
-                
+
                 // Got int, have to split the pos myself
                 return (pos, new Vector3(!IsEqualX(pos.x) ? pos.x + 1 : pos.x, pos.y, !IsEqualZ(pos.z) ? pos.z + 1 : pos.z));
                 
