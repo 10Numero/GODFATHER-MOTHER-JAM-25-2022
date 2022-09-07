@@ -44,11 +44,11 @@ public class GridHelper : MonoBehaviour
             case ACube.eCubeType.Oven:
                 
                 pos = new Vector3(
-                    IsEqualZ(__hookedBox.position.z) ? (!IsOnTheLeft(player.position - __hookedBox.position) ? __hookedBox.transform.position.x - 1 : __hookedBox.transform.position.x + 1)  
+                    IsEqualY(__hookedBox.position.y) ? (!IsOnTheLeft(player.position - __hookedBox.position) ? __hookedBox.transform.position.x - 1 : __hookedBox.transform.position.x + 1)  
                         : __hookedBox.transform.position.x,
-                    __hookedBox.transform.position.y,
-                    IsEqualX(__hookedBox.position.x) ? (!IsOnTheTop(player.position - __hookedBox.position) ? __hookedBox.transform.position.z - 1 : __hookedBox.transform.position.z + 1)
-                        : __hookedBox.transform.position.z);
+                    IsEqualX(__hookedBox.position.x) ? (IsOnTheTop(player.position - __hookedBox.position) ? __hookedBox.transform.position.y - 1 : __hookedBox.transform.position.y + 1)
+                        : __hookedBox.transform.position.y,
+                    __hookedBox.transform.position.z);
                 
                 return (pos, __hookedBox.position);
                 
@@ -56,28 +56,28 @@ public class GridHelper : MonoBehaviour
                 
                 // Get mid positions for each targets
                 pos = new Vector3(
-                    IsEqualZ(__hookedBox.position.x) ? __hookedBox.position.x : (__hookedBox.transform.position.x + player.transform.position.x) / 2, 
-                    player.position.y, 
-                    IsEqualX(__hookedBox.position.z) ? __hookedBox.position.z : (__hookedBox.transform.position.z + player.transform.position.z) / 2);
+                    IsEqualY(__hookedBox.position.x) ? __hookedBox.position.x : (__hookedBox.transform.position.x + player.transform.position.x) / 2,
+                    IsEqualX(__hookedBox.position.y) ? __hookedBox.position.y : (__hookedBox.transform.position.y + player.transform.position.y) / 2,
+                    player.position.y);
 
                 // Got decimal, floor & ceil are enough to get 2 dif pos next to each other
                 if (!int.TryParse(pos.x.ToString(CultureInfo.InvariantCulture), out var value))
-                    return (new Vector3(Mathf.Floor(pos.x), pos.y, Mathf.Floor(pos.z)), new Vector3(Mathf.CeilToInt(pos.x), pos.y, Mathf.CeilToInt(pos.z)));
+                    return (new Vector3(Mathf.Floor(pos.x), Mathf.Floor(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
 
-                if (!int.TryParse(pos.z.ToString(CultureInfo.InvariantCulture), out var valueZ))
-                    return (new Vector3(Mathf.Floor(pos.x), pos.y, Mathf.Floor(pos.z)), new Vector3(Mathf.CeilToInt(pos.x), pos.y, Mathf.CeilToInt(pos.z)));
+                if (!int.TryParse(pos.y.ToString(CultureInfo.InvariantCulture), out var valueZ))
+                    return (new Vector3(Mathf.Floor(pos.x), Mathf.Floor(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
 
                 // Got int, have to split the pos myself
-                return (pos, new Vector3(!IsEqualX(pos.x) ? pos.x + 1 : pos.x, pos.y, !IsEqualZ(pos.z) ? pos.z + 1 : pos.z));
+                return (pos, new Vector3(!IsEqualX(pos.x) ? pos.x + 1 : pos.x, !IsEqualY(pos.y) ? pos.y + 1 : pos.y, pos.y));
                 
             case ACube.eCubeType.Sugar:
 
                 pos = new Vector3(
-                    IsEqualZ(__hookedBox.position.z) ? (!IsOnTheLeft(__hookedBox.position - player.position) ? player.transform.position.x - 1 : player.transform.position.x + 1)  
+                    IsEqualY(__hookedBox.position.y) ? (!IsOnTheLeft(__hookedBox.position - player.position) ? player.transform.position.x - 1 : player.transform.position.x + 1)  
                         : player.transform.position.x,
                     player.transform.position.y,
-                    IsEqualX(__hookedBox.position.x) ? (!IsOnTheTop(__hookedBox.position - player.position) ? player.transform.position.z - 1 : player.transform.position.z + 1)
-                        : player.transform.position.z);
+                    IsEqualX(__hookedBox.position.x) ? (!IsOnTheTop(__hookedBox.position - player.position) ? player.transform.position.y - 1 : player.transform.position.y + 1)
+                        : player.transform.position.y);
                 
                 return (pos, player.position);
             
@@ -97,15 +97,15 @@ public class GridHelper : MonoBehaviour
     
     bool IsOnTheLeft(Vector3 __dir)
     {
-        var dir = Vector3.Cross(player.transform.forward, __dir);
-        return dir.y >= -1;
+        var dir = Vector3.Cross(player.transform.up, __dir);
+        return dir.z <= -1;
 
     }
 
     bool IsOnTheTop(Vector3 __dir)
     {
         var dir = Vector3.Cross(player.InverseTransformDirection(Vector3.left), __dir);
-        return dir.y >= 1;
+        return dir.z >= 1;
     }
     
     bool IsEqualX(float __value)
@@ -113,9 +113,9 @@ public class GridHelper : MonoBehaviour
         return Math.Abs(__value - player.transform.position.x) < 0.1f;
     }
 
-    bool IsEqualZ(float __value)
+    bool IsEqualY(float __value)
     {
-        return Math.Abs(__value - player.transform.position.z) < 0.1f;
+        return Math.Abs(__value - player.transform.position.y) < 0.1f;
     }
 
     void GetTilePosition(Transform __target)
