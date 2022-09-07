@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -45,7 +45,7 @@ public class LevelDesignToolWindow : EditorWindow
 
 
 
-        /*Event e = Event.current;
+        *//*Event e = Event.current;
         switch (e.type)
         {
             case EventType.MouseDown:
@@ -76,7 +76,7 @@ public class LevelDesignToolWindow : EditorWindow
                 }
 
                 break;
-        }*/
+        }*//*
 
         var toolbarRect = new Rect((SceneView.lastActiveSceneView.camera.pixelRect.width / 6), 5, (SceneView.lastActiveSceneView.camera.pixelRect.width * 4 / 6), SceneView.lastActiveSceneView.camera.pixelRect.height / 20);
         GUILayout.BeginArea(toolbarRect);
@@ -104,3 +104,4 @@ public class LevelDesignToolWindow : EditorWindow
 }
 
 
+*/
