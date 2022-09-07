@@ -80,10 +80,10 @@ public class GridHelper : MonoBehaviour
                 pos = new Vector3(
                     IsEqualY(__hookedBox.position.y) ? (!IsOnTheLeft(__hookedBox.position - player.position) ? player.transform.position.x - 1 : player.transform.position.x + 1)  
                         : player.transform.position.x,
-                    player.transform.position.y,
-                    IsEqualX(__hookedBox.position.x) ? (!IsOnTheTop(__hookedBox.position - player.position) ? player.transform.position.y - 1 : player.transform.position.y + 1)
-                        : player.transform.position.y);
-                
+                    IsEqualX(__hookedBox.position.x) ? (IsOnTheTop(__hookedBox.position - player.position) ? player.transform.position.y - 1 : player.transform.position.y + 1)
+                        : player.transform.position.y,
+                    player.transform.position.z);
+
                 return (pos, player.position);
             
             default:
