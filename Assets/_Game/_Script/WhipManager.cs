@@ -11,8 +11,9 @@ public class WhipManager : MonoBehaviour
     [SerializeField] private float whipTime = 1f;
     private bool hasInput = false;
     private float timer = 0;
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private bool whipIsMoving;
 
     private Vector3 targetPos;
     private RaycastHit2D _raycastHit;
@@ -27,18 +28,25 @@ public class WhipManager : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         offsetX = whipstartPoint.position.x;
     }
 
     private void Update()
     {
         GetInput();
+        if (whipIsMoving)
+        {
+            UpdateWhipPositions();
+        }
     }
 
     private void GetInput()
     {
+        if (whipIsMoving)
+        {
+            return;
+        }
+
         if (hasInput)
         {
             timer -= Time.deltaTime;
@@ -48,8 +56,8 @@ public class WhipManager : MonoBehaviour
             if (timer <= 0)
             {
                 WhipHit();
+                whipIsMoving = true;
                 hasInput = false;
-                lineRenderer.enabled = false;
             }
             return;
         }
@@ -67,7 +75,7 @@ public class WhipManager : MonoBehaviour
             {
                 direction = new Vector2(-1, 0);
                 spriteRenderer.flipX = false;
-                whipstartPoint.position =  new Vector3(transform.position.x + offsetX, whipstartPoint.position.y,0);
+                whipstartPoint.position =  new Vector3(transform.position.x + offsetX, whipstartPoint.position.y, 0);
 
             }
             hasInput = true;
@@ -112,10 +120,15 @@ public class WhipManager : MonoBehaviour
                     break;
             }
             audioSource.Play();
-            Debug.Log(cube.cubeType);
 
         }
 
+    }
+    
+    private void UpdateWhipPositions()
+    {
+        lineRenderer.SetPosition(0, whipstartPoint.position);
+        lineRenderer.SetPosition(1, _raycastHit.transform.position);
     }
 
     private void WhipHit()
@@ -156,7 +169,9 @@ public class WhipManager : MonoBehaviour
 
         animator.SetTrigger("Idle");
 
-        //remove line renderer after animation
+        whipIsMoving = false;
+        lineRenderer.enabled = false;
+
     }
 
 }
