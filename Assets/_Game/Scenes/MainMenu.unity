@@ -978,8 +978,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName:
   - Level_1
-  - WhipTestScene
   levelButton: {fileID: 7353544552455543685, guid: 39bf178b94133914baf7c9b7a03d2bf1, type: 3}
+  path: \_Game\Scenes\Levels
 --- !u!114 &878370016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,7 +1176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.080416046, y: 0.5965607}
   m_AnchorMax: {x: 0.5352492, y: 0.92970717}
-  m_AnchoredPosition: {x: 4.029999, y: -1.7158966}
+  m_AnchoredPosition: {x: 4.0300293, y: -1.7158966}
   m_SizeDelta: {x: -6.783905, y: 0.5681}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202483734
@@ -1590,7 +1590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5352492, y: 0.26463392}
   m_AnchorMax: {x: 0.8944172, y: 0.39214647}
-  m_AnchoredPosition: {x: -1.5, y: -3}
+  m_AnchoredPosition: {x: -1.5, y: -2.9999847}
   m_SizeDelta: {x: -3.1695862, y: 1.5563965}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1503850867
