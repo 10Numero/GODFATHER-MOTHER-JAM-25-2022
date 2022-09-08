@@ -12,6 +12,7 @@ public class ExitToNextLevel : MonoBehaviour
             NextLevel();
         }
     }
+
     public void NextLevel()
     {
         GameManager.Instance.LoadNextLevel();
