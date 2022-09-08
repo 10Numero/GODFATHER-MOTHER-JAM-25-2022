@@ -57,7 +57,7 @@ public class CubeConverterBar : EditorWindow
 
 
 
-        if (selectedObject.GetComponent<ACube>())
+        if (selectedObject.GetComponent<ACube>() || selectedObject.name.Contains("Floor"))
         {
 
             if (GUILayout.Button("Oven"))
@@ -92,6 +92,10 @@ public class CubeConverterBar : EditorWindow
                 //ChangeTo<EggCube>("Egg ");
             }
         }
+        else if (selectedObject.name.Contains("Floor"))
+        {
+
+        }
 
         // Content
 
@@ -104,11 +108,14 @@ public class CubeConverterBar : EditorWindow
     private void ChangeTo<T>(string newName) where T : ACube //Moyen de mettre un string du boxtype + suffixe Cube pour ensuite entrer le nom dans le Addcomponent et faire qu'une seule fonction (exple : string newBoxType = wantedType + Cube -> AddComponent<newBoxType>() )
     {
         selectedObject.name = newName + new Vector2(Mathf.FloorToInt(selectedObject.transform.position.x), Mathf.FloorToInt(selectedObject.transform.position.y));
-        DestroyImmediate(selectedObject.GetComponent<ACube>());
+        if (selectedObject.GetComponent<ACube>())
+        {
+            DestroyImmediate(selectedObject.GetComponent<ACube>());
+        }
         selectedObject.AddComponent<T>();
         selectedObject.GetComponent<T>().travelTime = 1;
-        
     }
+
     /*private void ChangeToSugar(GameObject __activeGameObject)
     {
         Destroy(__activeGameObject.GetComponent<ACube>());
