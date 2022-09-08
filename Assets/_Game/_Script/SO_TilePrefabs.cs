@@ -15,7 +15,7 @@ public class SO_TilePrefabs : ScriptableObject
 
     static SO_TilePrefabs GetInstance()
     {
-        var guid = AssetDatabase.FindAssets("SO_TilePrefabs");
+        var guid = AssetDatabase.FindAssets("Tiles");
 
         if (guid.Length <= 0)
             return null;

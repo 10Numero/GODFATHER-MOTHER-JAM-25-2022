@@ -5,10 +5,10 @@ using Sirenix.OdinInspector;
 
 public class SugarCube : ACube
 {
-
-    [SerializeField] GameObject player;
-    [SerializeField] float travelTime;
-
+    private void Start()
+    {
+        cubeType = eCubeType.Sugar;
+    }
     public override void Action()
     {
         MoveToPosition();
@@ -22,17 +22,17 @@ public class SugarCube : ACube
         IEnumerator Animation()
         {
             Vector3 startPos = transform.position;
-            //Vector3 endPos = tilesManager.targetedTiles.transform.position;
+            var endPos = GridHelper.Instance.GetEndPosition(cubeType, transform).Item2;
 
             float elapsedTime = 0;
 
             while (elapsedTime < travelTime)
             {
                 elapsedTime += Time.deltaTime;
-                //transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / travelTime);
+                transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / travelTime);
                 yield return null;
             }
-            //transform.position = endPos;
+            transform.position = endPos;
         }
     }
 }

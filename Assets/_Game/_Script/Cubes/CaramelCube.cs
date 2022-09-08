@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class GluPlayer : MonoBehaviour
+public class CaramelCube : MonoBehaviour
 {
     [SerializeField] List<GameObject> neighbourTiles;
     protected int targetedNeightbour;
