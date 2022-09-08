@@ -29,6 +29,7 @@ Shader "SMO/Complete/CRTScreen"
 		_MainTex ("Texture", 2D) = "white" {}
 		_Brightness("Brightness", Float) = 0
 		_Contrast("Contrast", Float) = 0
+		_Alpha("Alpha", Float) = 1
 	}
 	SubShader
 	{
@@ -65,6 +66,7 @@ Shader "SMO/Complete/CRTScreen"
 			sampler2D _MainTex;
 			float _Brightness;
 			float _Contrast;
+			float _Alpha;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
@@ -101,7 +103,11 @@ Shader "SMO/Complete/CRTScreen"
 				returnVal = saturate(returnVal);
 				returnVal = returnVal - _Contrast * (returnVal - 1.0) * returnVal * (returnVal - 0.5);
 
-				return fixed4(returnVal, 1.0);
+				fixed4 effect_final_val = fixed4(returnVal, _Alpha);
+				
+				fixed4 finalVal = lerp(col, effect_final_val, _Alpha);
+				
+				return finalVal;
 			}
 			ENDCG
 		}

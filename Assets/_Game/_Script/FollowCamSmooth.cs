@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class FollowCamSmooth : MonoBehaviour
 {
+    public bool followX;
+    public bool followY;
+    
     public float xPos;
-    public float zPos;
+    public float zPos = -10;
 
-    public float smoothSpeed = 10f;
+    public float smoothSpeed = 1;
 
     void Update()
     {
-        SmoothCam();
+        if(followX || followY)
+            SmoothCam();
     }
 
-    public void SmoothCam()
+    private void SmoothCam()
     {
-        transform.position = Vector3.Lerp(transform.position, Player.Instance.transform.position, smoothSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(
+            transform.position, 
+            new Vector3(followX ? Player.Instance.transform.position.x : xPos, 
+                followY ? Player.Instance.transform.position.y : transform.position.y, zPos),
+            smoothSpeed * Time.deltaTime);
     }
 }

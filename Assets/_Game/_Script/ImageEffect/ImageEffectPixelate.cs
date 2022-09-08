@@ -9,8 +9,6 @@ public class ImageEffectPixelate : ImageEffectBase
 
 	protected override void OnRenderImage(RenderTexture src, RenderTexture dst)
 	{
-		Debug.Log("on render");
-		
 		int width  = src.width / pixelSize;
 		int height = src.height / pixelSize;
 
