@@ -12,6 +12,8 @@ public abstract class ACube : MonoBehaviour
         Caramel
     }
 
+    protected Coroutine _coroutine;
+
     public eCubeType cubeType;
 
     public float travelTime;
@@ -22,4 +24,10 @@ public abstract class ACube : MonoBehaviour
     }
 
     public abstract void Action();
+
+    public void CancelAction()
+    {
+        StopCoroutine(_coroutine);
+    }
+
 }

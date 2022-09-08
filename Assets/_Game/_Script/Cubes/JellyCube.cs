@@ -17,7 +17,7 @@ public class JellyCube : ACube
     [Button]
     private void MoveToPosition()
     {
-        StartCoroutine(Animation());
+        _coroutine = StartCoroutine(Animation());
 
         IEnumerator Animation()
         {
@@ -39,4 +39,6 @@ public class JellyCube : ACube
 
         }
     }
+
+
 }

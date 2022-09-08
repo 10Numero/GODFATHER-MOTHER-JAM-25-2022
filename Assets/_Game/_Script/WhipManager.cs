@@ -138,6 +138,7 @@ public class WhipManager : MonoBehaviour
         if (cube)
         {
             cube.Action();
+            Player.Instance.lastHittedCube = cube;
         }
 
         switch (cube.cubeType)
