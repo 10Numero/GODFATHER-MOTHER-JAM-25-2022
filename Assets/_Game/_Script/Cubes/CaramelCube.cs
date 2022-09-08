@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 public class CaramelCube : MonoBehaviour
 {
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

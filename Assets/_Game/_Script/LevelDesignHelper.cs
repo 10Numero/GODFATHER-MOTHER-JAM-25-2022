@@ -70,6 +70,7 @@ public class LevelDesignHelper : MonoBehaviour
                     case ACube.eCubeType.Sugar:
                         child.name = "Sugar ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
                         child.AddComponent<SugarCube>();
+
                         break;
                 }
                 
