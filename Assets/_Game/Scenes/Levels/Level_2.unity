@@ -4023,6 +4023,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9204024913862307191, guid: 9a1c1abdfe96f7941b67a1e500711f10, type: 3}
+      propertyPath: followX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204024913862307191, guid: 9a1c1abdfe96f7941b67a1e500711f10, type: 3}
       propertyPath: followY
       value: 1
       objectReference: {fileID: 0}

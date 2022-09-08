@@ -30,39 +30,41 @@ public class CaramelCube : MonoBehaviour
             //other.transform.position = this.transform.position;
             cube.CancelAction();
 
-            Debug.Log(transform.position);
+            Debug.Log("caramel : " + transform.position);
+            Debug.Log("Player : " + other.transform.position);
 
             if (other.transform.position.y > transform.position.y) // En haut
             {
-                Debug.Log("a");
+                Debug.Log("Joueur detecter en haut");
                 other.transform.position = new Vector3(transform.position.x,
                                                         transform.position.y + 1,
                                                         other.transform.position.z);
             }
             else if (other.transform.position.x > transform.position.x) // A droite
             {
-                Debug.Log("b");
+                Debug.Log("Joueur detecter à droite");
 
                 other.transform.position = new Vector3(transform.position.x + 1,
                                                         transform.position.y,
                                                         other.transform.position.z);
             }
-            else if (other.transform.position.y < transform.position.y) // A gauche
+            else if (other.transform.position.y < transform.position.y) // En bas
             {
-                Debug.Log("c");
-
-                other.transform.position = new Vector3(transform.position.x - 1,
-                                                        transform.position.y,
-                                                        other.transform.position.z);
-            }
-            else if (other.transform.position.x < transform.position.x) // En bas
-            {
-                Debug.Log("d");
+                Debug.Log("Joueur detecter en bas");
 
                 other.transform.position = new Vector3(transform.position.x,
                                                         transform.position.y - 1,
                                                         other.transform.position.z);
             }
+            else if (other.transform.position.x < transform.position.x) // A gauche
+            {
+                Debug.Log("Joueur detecter à gauche");
+
+                other.transform.position = new Vector3(transform.position.x - 1,
+                                                        transform.position.y,
+                                                        other.transform.position.z);
+            }
+            
 
         }
         else if(other.GetComponent<SugarCube>() != null)
