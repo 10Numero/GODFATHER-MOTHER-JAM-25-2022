@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
         allLevels = new List<string>();
         allLevels = GetComponent<FindLevelInFolder>().FindLevels();
         PlayerPrefs.SetInt("Level_1", 1);

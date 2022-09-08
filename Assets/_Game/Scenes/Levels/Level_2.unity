@@ -354,7 +354,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 45491811}
-  - component: {fileID: 45491813}
   - component: {fileID: 45491812}
   m_Layer: 0
   m_Name: Enter ( -1, 4 )
@@ -430,32 +429,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &45491813
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45491810}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &82992710
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 88681492}
 --- !u!212 &88681492
 SpriteRenderer:
@@ -1157,7 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 219678452}
 --- !u!212 &219678452
 SpriteRenderer:
@@ -2338,11 +2311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107029539699138379, guid: 83b0d268b8c614348ac297c42b623ff8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9107029539699138379, guid: 83b0d268b8c614348ac297c42b623ff8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9107029539699138379, guid: 83b0d268b8c614348ac297c42b623ff8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3174,7 +3147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 1
+  speed: 1
   _spriteRenderer: {fileID: 771023543}
 --- !u!212 &771023543
 SpriteRenderer:
@@ -3607,7 +3580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 989324835}
 --- !u!212 &989324835
 SpriteRenderer:
@@ -4596,7 +4569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 1293605228}
 --- !u!212 &1293605228
 SpriteRenderer:
@@ -5900,7 +5873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 1656013729}
 --- !u!212 &1656013729
 SpriteRenderer:
@@ -6333,7 +6306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 1685093702}
 --- !u!212 &1685093702
 SpriteRenderer:
@@ -6433,7 +6406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeType: 0
-  travelTime: 0
+  speed: 1
   _spriteRenderer: {fileID: 1735917329}
 --- !u!212 &1735917329
 SpriteRenderer:
@@ -7042,6 +7015,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!1 &2001642025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001642027}
+  - component: {fileID: 2001642026}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2001642026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001642025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a305add98d2ea1d448d5dc3d40e5bf10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allLevels: []
+  fadeBackground: {fileID: 0}
+--- !u!4 &2001642027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001642025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7627605, y: -0.20704368, z: 0.06769401}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2060123557
 GameObject:
   m_ObjectHideFlags: 0
