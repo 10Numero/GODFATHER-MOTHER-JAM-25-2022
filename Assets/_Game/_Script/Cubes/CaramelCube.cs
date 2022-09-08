@@ -36,7 +36,7 @@ public class CaramelCube : MonoBehaviour
             {
                 Debug.Log("a");
                 other.transform.position = new Vector3(transform.position.x,
-                                                        other.transform.position.y,
+                                                        transform.position.y + 1,
                                                         other.transform.position.z);
             }
             else if (other.transform.position.x > transform.position.x) // A droite
@@ -52,7 +52,7 @@ public class CaramelCube : MonoBehaviour
                 Debug.Log("c");
 
                 other.transform.position = new Vector3(transform.position.x - 1,
-                                                        other.transform.position.y,
+                                                        transform.position.y,
                                                         other.transform.position.z);
             }
             else if (other.transform.position.x < transform.position.x) // En bas
@@ -60,7 +60,7 @@ public class CaramelCube : MonoBehaviour
                 Debug.Log("d");
 
                 other.transform.position = new Vector3(transform.position.x,
-                                                        other.transform.position.y - 1,
+                                                        transform.position.y - 1,
                                                         other.transform.position.z);
             }
 
