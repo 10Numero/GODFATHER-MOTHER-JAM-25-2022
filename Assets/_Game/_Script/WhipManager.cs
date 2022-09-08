@@ -28,7 +28,7 @@ public class WhipManager : MonoBehaviour
 
     private void Start()
     {
-        offsetX = whipstartPoint.position.x;
+        offsetX = whipstartPoint.localPosition.x;
     }
 
     private void Update()
@@ -55,9 +55,9 @@ public class WhipManager : MonoBehaviour
 
             if (timer <= 0)
             {
-                WhipHit();
                 whipIsMoving = true;
                 hasInput = false;
+                WhipHit();
             }
             return;
         }
@@ -69,13 +69,13 @@ public class WhipManager : MonoBehaviour
             {
                 direction = new Vector2(1, 0);
                 spriteRenderer.flipX = true;
-                whipstartPoint.position = new Vector3(transform.position.x - offsetX, whipstartPoint.position.y, 0);
+                whipstartPoint.localPosition = new Vector3(- offsetX, whipstartPoint.localPosition.y, 0);
             }
             else
             {
                 direction = new Vector2(-1, 0);
                 spriteRenderer.flipX = false;
-                whipstartPoint.position =  new Vector3(transform.position.x + offsetX, whipstartPoint.position.y, 0);
+                whipstartPoint.localPosition =  new Vector3(+ offsetX, whipstartPoint.localPosition.y, 0);
 
             }
             hasInput = true;
@@ -100,8 +100,14 @@ public class WhipManager : MonoBehaviour
             }
             timer = whipTime;
             var cube = _raycastHit.collider.transform.gameObject.GetComponent<ACube>();
+            if (!cube)
+            {
+                Debug.Log("Not a cube : " + _raycastHit.collider.name);
+                return;
+            }
             animator.SetTrigger("Whip");
 
+            
             switch (cube.cubeType)
             {
                 case ACube.eCubeType.Oven:
@@ -140,6 +146,13 @@ public class WhipManager : MonoBehaviour
             cube.Action();
             Player.Instance.lastHittedCube = cube;
         }
+        else
+        {
+            whipIsMoving = false;
+            lineRenderer.enabled = false;
+            return;
+        }
+            
 
         switch (cube.cubeType)
         {
@@ -159,17 +172,13 @@ public class WhipManager : MonoBehaviour
             default:
                 break;
         }
-        StartCoroutine(EndAnimationCoroutine(cube.travelTime));
+
+        Debug.Log("sub");
+        cube.OnReachDest += EndAnimation;
 
         audioSource.Play();
     }
 
-    IEnumerator EndAnimationCoroutine(float travelTime)
-    {
-        yield return new WaitForSeconds(travelTime);
-
-        EndAnimation();
-    }
 
     public void EndAnimation()
     {

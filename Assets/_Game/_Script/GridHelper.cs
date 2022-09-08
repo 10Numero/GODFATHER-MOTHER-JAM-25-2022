@@ -39,13 +39,13 @@ public class GridHelper : MonoBehaviour
         switch (__boxType)
         {
             case ACube.eCubeType.Oven:
-                
+
                 pos = new Vector3(
                     IsEqualY(__hookedBox.position.y) ? (!IsOnTheLeft(Player.Instance.transform.position - __hookedBox.position) ? __hookedBox.transform.position.x - 1 : __hookedBox.transform.position.x + 1)  
                         : __hookedBox.transform.position.x,
                     IsEqualX(__hookedBox.position.x) ? (IsOnTheTop(Player.Instance.transform.position - __hookedBox.position) ? __hookedBox.transform.position.y - 1 : __hookedBox.transform.position.y + 1)
                         : __hookedBox.transform.position.y,
-                    __hookedBox.transform.position.z);
+                    Player.Instance.transform.position.z);
                 
                 return (pos, __hookedBox.position);
                 
@@ -97,6 +97,7 @@ public class GridHelper : MonoBehaviour
     bool IsOnTheLeft(Vector3 __dir)
     {
         var dir = Vector3.Cross(Player.Instance.transform.transform.up, __dir);
+        Debug.Log("return : " + (!(dir.z <= 1)));
         return dir.z <= -1;
 
     }
@@ -114,6 +115,8 @@ public class GridHelper : MonoBehaviour
 
     bool IsEqualY(float __value)
     {
+
+        Debug.Log("y : " + (Math.Abs(__value - Player.Instance.transform.transform.position.y) < 0.1f));
         return Math.Abs(__value - Player.Instance.transform.transform.position.y) < 0.1f;
     }
 

@@ -24,15 +24,19 @@ public class OvenCube : ACube
         {
             Vector3 startPos = Player.Instance.transform.position;
             var endPos = GridHelper.Instance.GetEndPosition(cubeType, transform).Item1;
-            float elapsedTime = 0;
 
-            while (elapsedTime < travelTime)
+            var dst = Vector3.Distance(Player.Instance.transform.position, endPos);
+
+            float t = 0;
+
+            while (t < 1)
             {
-                elapsedTime += Time.deltaTime;
-                Player.Instance.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / travelTime);
+                t += (speed / dst) * Time.deltaTime;
+                Player.Instance.transform.position = Vector3.Lerp(startPos, endPos, t);
                 yield return null;
             }
             Player.Instance.transform.position = endPos;
+            OnReachDest?.Invoke();
         }
     }
 

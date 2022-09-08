@@ -26,17 +26,18 @@ public class JellyCube : ACube
             Vector3 playerStartPos = Player.Instance.transform.position;
             var positions = GridHelper.Instance.GetEndPosition(cubeType, transform);
 
-            float elapsedTime = 0;
+            float t = 0;
 
-            while (elapsedTime < travelTime)
+            while (t < 1)
             {
-                elapsedTime += Time.deltaTime;
-                Player.Instance.transform.position = Vector3.Lerp(playerStartPos, positions.Item1, elapsedTime / travelTime);
-                transform.position = Vector3.Lerp(startPos, positions.Item2, elapsedTime / travelTime);
+                t += speed * Time.deltaTime;
+                Player.Instance.transform.position = Vector3.Lerp(playerStartPos, positions.Item1, t);
+                transform.position = Vector3.Lerp(startPos, positions.Item2, t);
                 yield return null;
             }
             transform.position = positions.Item2;
             Player.Instance.transform.position = positions.Item1;
+            OnReachDest?.Invoke();
 
         }
     }

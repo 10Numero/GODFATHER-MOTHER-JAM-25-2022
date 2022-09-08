@@ -19,9 +19,11 @@ public abstract class ACube : MonoBehaviour
 
     [OnValueChanged("SelfUpdateSprite")]public eCubeType cubeType;
 
-    public float travelTime;
+    public float speed = 1;
 
     [SerializeField] protected SpriteRenderer _spriteRenderer;
+
+    public Action OnReachDest;
 
     private void OnEnable()
     {
@@ -29,10 +31,12 @@ public abstract class ACube : MonoBehaviour
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
         
         SelfUpdateSprite();
+
+        speed = 5;
     }
 
     void Start()
-    { 
+    {
         GridHelper.Instance.Register(this);
     }
 

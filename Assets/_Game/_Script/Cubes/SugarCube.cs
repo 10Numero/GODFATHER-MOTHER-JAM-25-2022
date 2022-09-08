@@ -24,15 +24,18 @@ public class SugarCube : ACube
             Vector3 startPos = transform.position;
             var endPos = GridHelper.Instance.GetEndPosition(cubeType, transform).Item2;
 
-            float elapsedTime = 0;
+            var dst = Vector3.Distance(Player.Instance.transform.position, endPos);
 
-            while (elapsedTime < travelTime)
+            float t = 0;
+
+            while (t < 1)
             {
-                elapsedTime += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / travelTime);
+                t += (speed / dst) * Time.deltaTime;
+                transform.position = Vector3.Lerp(startPos, endPos, t);
                 yield return null;
             }
             transform.position = endPos;
+            OnReachDest?.Invoke();
         }
     }
 }

@@ -189,11 +189,16 @@ public class LevelDesignHelper : MonoBehaviour
             {
 
                 var sr = child.GetComponent<SpriteRenderer>();
-                var col = child.AddComponent<BoxCollider2D>();
+                var col = child.GetComponent<BoxCollider2D>();
                 
                 switch (__type)
                 {
                     case SimpleTilesType.Floor:
+
+                        if (col)
+                        {
+                            DestroyImmediate(col);
+                        }
 
                         child.transform.localScale = Vector3.one * 3.2f;
 
