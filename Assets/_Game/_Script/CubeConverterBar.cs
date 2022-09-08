@@ -41,12 +41,13 @@ public class CubeConverterBar : EditorWindow
         tileInstance ??= SO_TilePrefabs.Instance;
 
         selectedObject = Selection.activeGameObject;
-
-
     }
 
     private void SceneViewGUI(SceneView __sceneView)
     {
+        if (!selectedObject)
+            return;
+
         Handles.BeginGUI();
 
         var toolbarRect = new Rect((SceneView.lastActiveSceneView.camera.pixelRect.width / 6), 5, (SceneView.lastActiveSceneView.camera.pixelRect.width * 4 / 6), SceneView.lastActiveSceneView.camera.pixelRect.height / 20);
@@ -54,8 +55,11 @@ public class CubeConverterBar : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
 
+
+
         if (selectedObject.GetComponent<ACube>())
         {
+
             if (GUILayout.Button("Oven"))
             {
                 if (selectedObject.GetComponent<OvenCube>())
@@ -85,9 +89,7 @@ public class CubeConverterBar : EditorWindow
                 if (selectedObject.GetComponent<CaramelCube>())
                     return;
 
-                Debug.Log("Switching to CaramelCube");
-
-                ChangeToCaramel(selectedObject);
+                //ChangeTo<EggCube>("Egg ");
             }
         }
 
@@ -101,13 +103,13 @@ public class CubeConverterBar : EditorWindow
 
     private void ChangeTo<T>(string newName) where T : ACube //Moyen de mettre un string du boxtype + suffixe Cube pour ensuite entrer le nom dans le Addcomponent et faire qu'une seule fonction (exple : string newBoxType = wantedType + Cube -> AddComponent<newBoxType>() )
     {
-        selectedObject.name = newName + new Vector2(selectedObject.transform.position.x, selectedObject.transform.position.y);
+        selectedObject.name = newName + new Vector2(Mathf.FloorToInt(selectedObject.transform.position.x), Mathf.FloorToInt(selectedObject.transform.position.y));
         DestroyImmediate(selectedObject.GetComponent<ACube>());
         selectedObject.AddComponent<T>();
         selectedObject.GetComponent<T>().travelTime = 1;
         
     }
-    private void ChangeToSugar(GameObject __activeGameObject)
+    /*private void ChangeToSugar(GameObject __activeGameObject)
     {
         Destroy(__activeGameObject.GetComponent<ACube>());
         __activeGameObject.AddComponent<SugarCube>();
@@ -124,5 +126,5 @@ public class CubeConverterBar : EditorWindow
         Destroy(__activeGameObject.GetComponent<ACube>());
         __activeGameObject.AddComponent<CaramelCube>();
         name = "Caramel " + new Vector2(testGO.transform.position.x, testGO.transform.position.y);
-    }
+    }*/
 }
