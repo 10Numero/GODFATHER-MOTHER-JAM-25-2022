@@ -7,8 +7,15 @@ public class FollowCamSmooth : MonoBehaviour
     public float xPos;
     public float zPos;
 
+    public float smoothSpeed = 10f;
+
     void Update()
     {
-        transform.position = new Vector3(xPos,Player.Instance.transform.position.y, zPos);
+        SmoothCam();
+    }
+
+    public void SmoothCam()
+    {
+        transform.position = Vector3.Lerp(transform.position, Player.Instance.transform.position, smoothSpeed * Time.deltaTime);
     }
 }
