@@ -1,33 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelDesignHelper : MonoBehaviour
 {
     [SerializeField] private Transform _tilesContainer;
-
-    [SerializeField] private Vector2 _gridSize = new(10, 10);
-
-    [SerializeField] private GameObject _floorTile;
-    [SerializeField] private GameObject _wallTile;
-
-    public Dictionary<Vector2, Transform> tiles = new();
     
-   [Button]
-    void CreateGrid()
-    {
-        for (var i = 0; i < _gridSize.x; i++)
-        {
-            for (var y = 0; i < _gridSize.y; i ++)
-            {
-                var tile = Instantiate(_floorTile, new Vector3(i, 0, y), Quaternion.Euler(new Vector3(90, 0, 0)));
-                tile.transform.SetParent(_tilesContainer.GetChild(0));
-
-                tiles[new Vector2(i, y)] = tile.transform;
-            }
-        }
-    }
     
     [Button]
     void RandomizeTile(Sprite[] __sprites, string __tag = "Floor")
@@ -52,6 +32,90 @@ public class LevelDesignHelper : MonoBehaviour
             
             if(child.childCount > 0)
                 RecursiveSpriteReplacement(child, __sprites, __tag);
+        }
+    }
+
+    [Button]
+    void RecursiveCubeSetup(Transform __tr, string __name = "jelly", ACube.eCubeType __type = ACube.eCubeType.Jelly)
+    {
+        if (__tr == null)
+        {
+            if(_tilesContainer == null)
+                return;
+
+            __tr = _tilesContainer;
+        }
+
+        foreach (Transform child in __tr)
+        {
+            if (child.name.ToLower().Contains(__name))
+            {
+                var cube = child.GetComponent<ACube>();
+            
+                if(cube)
+                    DestroyImmediate(cube);
+
+                switch (__type)
+                {
+                    case ACube.eCubeType.Jelly:
+                        child.name = "Jelly ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        child.AddComponent<JellyCube>();
+                        break;
+                
+                    case ACube.eCubeType.Oven:
+                        child.name = "Oven ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        child.AddComponent<OvenCube>();
+                        break;
+                
+                    case ACube.eCubeType.Sugar:
+                        child.name = "Sugar ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        child.AddComponent<SugarCube>();
+                        break;
+                }
+                
+                if(child.childCount > 0)
+                    RecursiveCubeSetup(child, __name, __type);
+            }
+        }
+    }
+    
+    private enum SimpleTilesType { Floor, Wall, Enter, Exit};
+    
+    
+    [Button("Recursive Renamer")]
+    void RecursiveRenamer(Transform __tr, string __name = "floor", SimpleTilesType __type = SimpleTilesType.Floor)
+    {
+        if (__tr == null)
+        {
+            if(_tilesContainer == null)
+                return;
+
+            __tr = _tilesContainer;
+        }
+
+        foreach (Transform child in __tr)
+        {
+            if (child.name.ToLower().Contains(__name))
+            {
+                switch (__type)
+                {
+                    case SimpleTilesType.Floor:
+                        child.name = "Floor ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        break;
+                    case SimpleTilesType.Wall:
+                        child.name = "Wall ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        break;
+                    case SimpleTilesType.Enter:
+                        child.name = "Enter ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        break;
+                    case SimpleTilesType.Exit:
+                        child.name = "Exit ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
+                        break;
+                }
+                
+                if(child.childCount > 0)
+                    RecursiveRenamer(child, __name, __type);
+            }
         }
     }
 }
