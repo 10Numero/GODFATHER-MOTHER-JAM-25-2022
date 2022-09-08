@@ -102,6 +102,7 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 0dd1a755ee081564081d0d7525a41bd9, type: 3}
   brightness: 27
   contrast: 2.1
+  alpha: 0.1
 --- !u!114 &3562859302895267432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,5 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d80d10c583d55468cf680e258ccbc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followX: 0
+  followY: 1
+  xPos: 0
+  zPos: -10
   smoothSpeed: 4
-  offset: {x: 0, y: 0, z: -9}
