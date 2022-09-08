@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public abstract class ACube : MonoBehaviour
@@ -14,9 +16,17 @@ public abstract class ACube : MonoBehaviour
 
     protected Coroutine _coroutine;
 
-    public eCubeType cubeType;
+    [OnValueChanged("SelfUpdateSprite")]public eCubeType cubeType;
 
     public float travelTime;
+
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
+
+    private void OnEnable()
+    {
+        _spriteRenderer ??= GetComponentInChildren<SpriteRenderer>();
+        SelfUpdateSprite();
+    }
 
     void Start()
     { 
@@ -30,4 +40,13 @@ public abstract class ACube : MonoBehaviour
         StopAllCoroutines();
     }
 
+    public void UpdateSprite(Sprite __value)
+    {
+        _spriteRenderer.sprite = __value;
+    }
+    
+    private void SelfUpdateSprite()
+    {
+        _spriteRenderer.sprite ??= SO_TileSpriteHolder.Instance.GetSprite(cubeType);
+    }
 }

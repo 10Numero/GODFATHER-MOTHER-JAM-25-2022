@@ -36,6 +36,31 @@ public class LevelDesignHelper : MonoBehaviour
     }
 
     [Button]
+    void RecursiveCubeSpritePlacement(Transform __tr, string __name = "jelly", ACube.eCubeType __type = ACube.eCubeType.Jelly)
+    {
+        if (__tr == null)
+        {
+            if(_tilesContainer == null)
+                return;
+
+            __tr = _tilesContainer;
+        }
+
+        foreach (Transform child in __tr)
+        {
+            if (child.name.ToLower().Contains(__name))
+            {
+                var cube = child.GetComponent<ACube>();
+
+                cube.UpdateSprite(SO_TileSpriteHolder.Instance.GetSprite(__type));
+
+                if(child.childCount > 0)
+                    RecursiveCubeSetup(child, __name, __type);
+            }
+        }
+    }
+
+    [Button]
     void RecursiveCubeSetup(Transform __tr, string __name = "jelly", ACube.eCubeType __type = ACube.eCubeType.Jelly)
     {
         if (__tr == null)
@@ -52,6 +77,8 @@ public class LevelDesignHelper : MonoBehaviour
             {
                 var cube = child.GetComponent<ACube>();
             
+                cube.UpdateSprite(SO_TileSpriteHolder.Instance.GetSprite(__type));
+                
                 if(cube)
                     DestroyImmediate(cube);
 

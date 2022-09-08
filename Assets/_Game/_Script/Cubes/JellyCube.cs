@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
+[ExecuteInEditMode]
 public class JellyCube : ACube
 {
     private void Start()
