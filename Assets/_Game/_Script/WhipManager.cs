@@ -159,20 +159,24 @@ public class WhipManager : MonoBehaviour
             default:
                 break;
         }
-        StartCoroutine(EndAnimation(cube.travelTime));
+        StartCoroutine(EndAnimationCoroutine(cube.travelTime));
 
         audioSource.Play();
     }
 
-    IEnumerator EndAnimation(float travelTime)
+    IEnumerator EndAnimationCoroutine(float travelTime)
     {
         yield return new WaitForSeconds(travelTime);
+
+        EndAnimation();
+    }
+
+    public void EndAnimation()
+    {
 
         animator.SetTrigger("Idle");
 
         whipIsMoving = false;
         lineRenderer.enabled = false;
-
     }
-
 }

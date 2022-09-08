@@ -27,7 +27,7 @@ public abstract class ACube : MonoBehaviour
 
     public void CancelAction()
     {
-        StopCoroutine(_coroutine);
+        StopAllCoroutines();
     }
 
 }

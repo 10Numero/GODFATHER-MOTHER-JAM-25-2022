@@ -5,16 +5,32 @@ using Sirenix.OdinInspector;
 
 public class CaramelCube : MonoBehaviour
 {
-    [SerializeField] List<GameObject> neighbourTiles;
-    protected int targetedNeightbour;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            //GameObject player = other.gameObject.transform.GetComponent<PlayerMovement>();
-            //player.StopMove();
-            //player.MovePlayer(neighbourTiles[targetedNeightbour]);
-        }
+            WhipManager whip= other.GetComponent<WhipManager>();
+            whip.StopAllCoroutines();
+            whip.EndAnimation();
+            ACube cube = other.GetComponent<Player>().lastHittedCube;
+            other.transform.position = this.transform.position;
+            cube.CancelAction();
+            
+        }else if(other.GetComponent<SugarCube>() != null)
+        {
+            ACube cube = other.GetComponent<SugarCube>();
+            cube.CancelAction();
+            other.transform.position = this.transform.position;
+            Player.Instance.GetComponent<WhipManager>().StopAllCoroutines();
+            Player.Instance.GetComponent<WhipManager>().EndAnimation();
+        }/*else if(other.GetComponent<JellyCube>() != null)
+        {
+            ACube cube = other.GetComponent<JellyCube>();
+            cube.CancelAction();
+            other.transform.position = this.transform.position;
+            Player.Instance.GetComponent<WhipManager>().StopAllCoroutines();
+            Player.Instance.GetComponent<WhipManager>().EndAnimation();
+        }*/
     }
 }
