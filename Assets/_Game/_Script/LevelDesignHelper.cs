@@ -110,6 +110,7 @@ public class LevelDesignHelper : MonoBehaviour
                 if(cube)
                     DestroyImmediate(cube);
                 
+                child.transform.localScale = Vector3.one * 3;
                 
                 switch (__type)
                 {
@@ -188,15 +189,14 @@ public class LevelDesignHelper : MonoBehaviour
             {
 
                 var sr = child.GetComponent<SpriteRenderer>();
-
+                var col = child.AddComponent<BoxCollider2D>();
+                
                 switch (__type)
                 {
                     case SimpleTilesType.Floor:
 
                         child.transform.localScale = Vector3.one * 3.2f;
-                        
-                        Debug.Log("floor");
-                        
+
                         if (!sr)
                             child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.floorSprite;
                         else
@@ -205,6 +205,9 @@ public class LevelDesignHelper : MonoBehaviour
                         break;
                 
                     case SimpleTilesType.Wall:
+                        
+                        if (!col)
+                            child.AddComponent<BoxCollider2D>();
                         
                         child.transform.localScale = Vector3.one * 1.6f;
                         
@@ -219,6 +222,9 @@ public class LevelDesignHelper : MonoBehaviour
                 
                     case SimpleTilesType.Enter:
                         
+                        if (!col)
+                            child.AddComponent<BoxCollider2D>();
+                        
                         if (!sr)
                             child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.enterSprite;
                         else
@@ -227,6 +233,9 @@ public class LevelDesignHelper : MonoBehaviour
                         break;
                     
                     case SimpleTilesType.Exit:
+                        
+                        if (!col)
+                            child.AddComponent<BoxCollider2D>();
                         
                         if (!sr)
                             child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.exitSprite;
