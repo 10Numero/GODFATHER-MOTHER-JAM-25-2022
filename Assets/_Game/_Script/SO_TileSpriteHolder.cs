@@ -13,6 +13,8 @@ public class SO_TileSpriteHolder : ScriptableObject
     public Sprite ovenSprite;
     public Sprite jellySprite;
     public Sprite caramelSprite;
+    public Sprite enterSprite;
+    public Sprite exitSprite;
     
     public static SO_TileSpriteHolder Instance => _instance ? _instance : GetInstance();
     

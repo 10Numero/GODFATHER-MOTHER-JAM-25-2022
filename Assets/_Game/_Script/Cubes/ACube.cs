@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public abstract class ACube : MonoBehaviour
 {
     public enum eCubeType
@@ -24,7 +25,9 @@ public abstract class ACube : MonoBehaviour
 
     private void OnEnable()
     {
-        _spriteRenderer ??= GetComponentInChildren<SpriteRenderer>();
+        if(_spriteRenderer)
+            _spriteRenderer ??= GetComponent<SpriteRenderer>();
+        
         SelfUpdateSprite();
     }
 
@@ -42,11 +45,18 @@ public abstract class ACube : MonoBehaviour
 
     public void UpdateSprite(Sprite __value)
     {
-        _spriteRenderer.sprite = __value;
+        if (!_spriteRenderer)
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        
+        if(_spriteRenderer)
+            _spriteRenderer.sprite = __value;
     }
     
     private void SelfUpdateSprite()
     {
-        _spriteRenderer.sprite ??= SO_TileSpriteHolder.Instance.GetSprite(cubeType);
+        if(_spriteRenderer)
+            _spriteRenderer.sprite ??= SO_TileSpriteHolder.Instance.GetSprite(cubeType);
     }
 }

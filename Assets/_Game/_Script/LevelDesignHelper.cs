@@ -7,8 +7,8 @@ using UnityEngine;
 public class LevelDesignHelper : MonoBehaviour
 {
     [SerializeField] private Transform _tilesContainer;
-    
-    
+    [SerializeField] private SO_TileSpriteHolder _tileSpriteHolder;
+
     [Button]
     void RandomizeTile(Sprite[] __sprites, string __tag = "Floor")
     {
@@ -60,7 +60,37 @@ public class LevelDesignHelper : MonoBehaviour
         }
     }
 
-    [Button]
+    /// <summary>
+    /// Only to clean some level badly setup 
+    /// </summary>
+    /// <param name="__tr"></param>
+    /// <param name="__type"></param>
+    [Button("Clean Cube Setup")]
+    void CleanCubeSetup(Transform __tr, ACube.eCubeType __type = ACube.eCubeType.Jelly)
+    {
+        if (__tr == null)
+        {
+            if(_tilesContainer == null)
+                return;
+
+            __tr = _tilesContainer;
+        }
+
+        foreach (Transform child in __tr)
+        {
+            if (child.childCount > 0)
+            {
+                var childPos = child.GetChild(0).transform.position;
+                
+                DestroyImmediate(child.GetChild(0).gameObject);
+                
+                child.transform.position = childPos;
+            }
+            
+        }
+    }
+    
+    [Button("Recursive Cube Setup")]
     void RecursiveCubeSetup(Transform __tr, string __name = "jelly", ACube.eCubeType __type = ACube.eCubeType.Jelly)
     {
         if (__tr == null)
@@ -76,27 +106,29 @@ public class LevelDesignHelper : MonoBehaviour
             if (child.name.ToLower().Contains(__name))
             {
                 var cube = child.GetComponent<ACube>();
-            
-                cube.UpdateSprite(SO_TileSpriteHolder.Instance.GetSprite(__type));
                 
                 if(cube)
                     DestroyImmediate(cube);
-
+                
+                
                 switch (__type)
                 {
                     case ACube.eCubeType.Jelly:
                         child.name = "Jelly ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
-                        child.AddComponent<JellyCube>();
+                        cube = child.AddComponent<JellyCube>();
+                        cube.UpdateSprite(_tileSpriteHolder.GetSprite(__type));
                         break;
                 
                     case ACube.eCubeType.Oven:
                         child.name = "Oven ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
-                        child.AddComponent<OvenCube>();
+                        cube = child.AddComponent<OvenCube>();
+                        cube.UpdateSprite(_tileSpriteHolder.GetSprite(__type));
                         break;
                 
                     case ACube.eCubeType.Sugar:
                         child.name = "Sugar ( " + child.transform.position.x + ", " + child.transform.position.y + " )";
-                        child.AddComponent<SugarCube>();
+                        cube = child.AddComponent<SugarCube>();
+                        cube.UpdateSprite(_tileSpriteHolder.GetSprite(__type));
 
                         break;
                 }
@@ -146,4 +178,66 @@ public class LevelDesignHelper : MonoBehaviour
             }
         }
     }
+    
+    [Button("Tiles Setup")]
+    void TilesSetup(string __name = "floor", SimpleTilesType __type = SimpleTilesType.Floor)
+    {
+        foreach (Transform child in _tilesContainer)
+        {
+            if (child.name.ToLower().Contains(__name))
+            {
+
+                var sr = child.GetComponent<SpriteRenderer>();
+
+                switch (__type)
+                {
+                    case SimpleTilesType.Floor:
+
+                        child.transform.localScale = Vector3.one * 3.2f;
+                        
+                        Debug.Log("floor");
+                        
+                        if (!sr)
+                            child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.floorSprite;
+                        else
+                            sr.sprite = _tileSpriteHolder.floorSprite;
+                        
+                        break;
+                
+                    case SimpleTilesType.Wall:
+                        
+                        child.transform.localScale = Vector3.one * 1.6f;
+                        
+                        Debug.Log("wall");
+                        
+                        if (!sr)
+                            child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.wallSprite;
+                        else
+                            sr.sprite = _tileSpriteHolder.wallSprite;
+                        
+                        break;
+                
+                    case SimpleTilesType.Enter:
+                        
+                        if (!sr)
+                            child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.enterSprite;
+                        else
+                            sr.sprite = _tileSpriteHolder.enterSprite;
+                        
+                        break;
+                    
+                    case SimpleTilesType.Exit:
+                        
+                        if (!sr)
+                            child.AddComponent<SpriteRenderer>().sprite = _tileSpriteHolder.exitSprite;
+                        else
+                            sr.sprite = _tileSpriteHolder.exitSprite;
+                        
+                        break;
+                }
+                
+            }
+        }
+    }
+
 }
