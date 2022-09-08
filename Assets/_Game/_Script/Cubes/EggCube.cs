@@ -5,6 +5,7 @@ using UnityEngine;
 public class EggCube : ACube
 {
     bool alrdyHit = false;
+    [SerializeField] Animator animator;
 
     public override void Action()
     {
@@ -15,7 +16,7 @@ public class EggCube : ACube
     {
         if (!alrdyHit)
         {
-            //Changement de sprite
+            animator.SetTrigger("broking");
             Debug.Log("Egg hit");
             alrdyHit = true;
         }

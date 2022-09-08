@@ -120,7 +120,7 @@ public class CubeConverterBar : EditorWindow
             DestroyImmediate(selectedObject.GetComponent<ACube>());
         }
         selectedObject.AddComponent<T>();
-        selectedObject.GetComponent<T>().travelTime = 1;
+        //selectedObject.GetComponent<T>().travelTime = 1;
     }
 
     /*private void ChangeToSugar(GameObject __activeGameObject)
