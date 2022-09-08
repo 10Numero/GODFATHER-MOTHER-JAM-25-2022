@@ -13,6 +13,8 @@ public class CubeConverterBar : EditorWindow
 
     public GameObject testGO;
 
+    public GameObject selectedObject;
+
     static CubeConverterBar()
     {
         Init();
@@ -29,16 +31,22 @@ public class CubeConverterBar : EditorWindow
     {
         tileInstance = SO_TilePrefabs.Instance;
 
-        Selection.selectionChanged += SceneViewGUI;
+        SceneView.duringSceneGui += SceneViewGUI;
+        Selection.selectionChanged += SelectionChanged;
         if (SceneView.lastActiveSceneView) SceneView.lastActiveSceneView.Repaint();
     }
 
-    public void SceneViewGUI()
+    public void SelectionChanged()
     {
         tileInstance ??= SO_TilePrefabs.Instance;
 
-        var selectedObject = Selection.activeGameObject;
+        selectedObject = Selection.activeGameObject;
 
+
+    }
+
+    private void SceneViewGUI(SceneView __sceneView)
+    {
         Handles.BeginGUI();
 
         var toolbarRect = new Rect((SceneView.lastActiveSceneView.camera.pixelRect.width / 6), 5, (SceneView.lastActiveSceneView.camera.pixelRect.width * 4 / 6), SceneView.lastActiveSceneView.camera.pixelRect.height / 20);
@@ -53,9 +61,7 @@ public class CubeConverterBar : EditorWindow
                 if (selectedObject.GetComponent<OvenCube>())
                     return;
 
-                Debug.Log("Switching to OvenCube");
-
-                ChangeToOven(selectedObject);
+                ChangeTo<OvenCube>("Oven ");
             }
 
             if (GUILayout.Button("Sugar"))
@@ -63,9 +69,7 @@ public class CubeConverterBar : EditorWindow
                 if (selectedObject.GetComponent<SugarCube>())
                     return;
 
-                Debug.Log("Switching to SugarCube");
-
-                ChangeToSugar(selectedObject);
+                ChangeTo<SugarCube>("Sugar ");
             }
 
             if (GUILayout.Button("Jelly"))
@@ -73,12 +77,10 @@ public class CubeConverterBar : EditorWindow
                 if (selectedObject.GetComponent<JellyCube>())
                     return;
 
-                Debug.Log("Switching to JellyCube");
-
-                ChangeToJelly(selectedObject);
+                ChangeTo<JellyCube>("Jelly ");
             }
 
-            if (GUILayout.Button("Caramel"))
+            if (GUILayout.Button("Egg"))
             {
                 if (selectedObject.GetComponent<CaramelCube>())
                     return;
@@ -97,11 +99,13 @@ public class CubeConverterBar : EditorWindow
         Handles.EndGUI();
     }
 
-    private void ChangeToOven(GameObject __activeGameObject) //Moyen de mettre un string du boxtype + suffixe Cube pour ensuite entrer le nom dans le Addcomponent et faire qu'une seule fonction (exple : string newBoxType = wantedType + Cube -> AddComponent<newBoxType>() )
+    private void ChangeTo<T>(string newName) where T : ACube //Moyen de mettre un string du boxtype + suffixe Cube pour ensuite entrer le nom dans le Addcomponent et faire qu'une seule fonction (exple : string newBoxType = wantedType + Cube -> AddComponent<newBoxType>() )
     {
-        Destroy(__activeGameObject.GetComponent<ACube>());
-        __activeGameObject.AddComponent<OvenCube>();
-        name = "Oven " + new Vector2(testGO.transform.position.x, testGO.transform.position.y);
+        selectedObject.name = newName + new Vector2(selectedObject.transform.position.x, selectedObject.transform.position.y);
+        DestroyImmediate(selectedObject.GetComponent<ACube>());
+        selectedObject.AddComponent<T>();
+        selectedObject.GetComponent<T>().travelTime = 1;
+        
     }
     private void ChangeToSugar(GameObject __activeGameObject)
     {
