@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,8 +13,9 @@ public class CubeConverterBar : EditorWindow
     private SO_TilePrefabs tileInstance;
 
     public GameObject testGO;
-
     public GameObject selectedObject;
+
+    public List<Sprite> _sprites = new();
 
     static CubeConverterBar()
     {
@@ -57,7 +59,16 @@ public class CubeConverterBar : EditorWindow
 
 
 
-        if (selectedObject.GetComponent<ACube>() || selectedObject.name.Contains("Floor"))
+        if (selectedObject.GetComponent<ACube>() 
+            || selectedObject.name.Contains("Floor") 
+            || selectedObject.name.Contains("floor")
+            || selectedObject.name.Contains("Wall") 
+            || selectedObject.name.Contains("wall")
+            || selectedObject.name.Contains("Entree") 
+            || selectedObject.name.Contains("entree")
+            || selectedObject.name.Contains("Sortie")
+            || selectedObject.name.Contains("sortie")
+            )
         {
 
             if (GUILayout.Button("Oven"))
@@ -91,10 +102,6 @@ public class CubeConverterBar : EditorWindow
 
                 //ChangeTo<EggCube>("Egg ");
             }
-        }
-        else if (selectedObject.name.Contains("Floor"))
-        {
-
         }
 
         // Content

@@ -16,10 +16,12 @@ public class EggCube : ACube
         if (!alrdyHit)
         {
             //Changement de sprite
+            Debug.Log("Egg hit");
             alrdyHit = true;
         }
         else
         {
+            Debug.Log("Getting Egg");
             //Recuperer le blanc d'oeuf
             Destroy(gameObject);
         }
