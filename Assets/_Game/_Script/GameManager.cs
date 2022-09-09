@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+        
+        Screen.SetResolution(256, 224, true);
     }
 
     private void Start()
