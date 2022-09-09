@@ -30,7 +30,13 @@ public class CulPouleEndAnimation : MonoBehaviour
             // _egg.gameObject.SetActive(false);
             _culPouleAnimator.enabled = true;
 
-            SceneManager.LoadScene("End");
+            StartCoroutine(Delay());
+            IEnumerator Delay()
+            {
+                yield return new WaitForSeconds(4);
+                SceneManager.LoadScene("End");
+            }
+            
         }
     }
 }
