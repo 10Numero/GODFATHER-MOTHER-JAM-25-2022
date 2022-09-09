@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitFade()
     {
         yield return new WaitForSeconds(1);
-        
+
         if (currentLevel >= allLevels.Count)
         {
             SceneManager.LoadScene("MainMenu");
@@ -75,9 +75,17 @@ public class GameManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(allLevels[currentLevel]);
+            if (currentLevel == 5)
+            {
+                audioSource.clip = bossMusic;
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.clip = gameMusic;
+            }
+            fadeBackground.DOColor(Color.clear, 1);
         }
-        fadeBackground.DOColor(Color.clear, 1);
-
     }
 
 
