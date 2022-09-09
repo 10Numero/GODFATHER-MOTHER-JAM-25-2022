@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 50428414}
   - component: {fileID: 50428416}
   - component: {fileID: 50428417}
+  - component: {fileID: 50428418}
   m_Layer: 0
   m_Name: Oven ( 5, -10 )
   m_TagString: Untagged
@@ -586,6 +587,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 50428416}
+--- !u!61 &50428418
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50428413}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &52149268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1209,7 @@ GameObject:
   - component: {fileID: 97175863}
   - component: {fileID: 97175865}
   - component: {fileID: 97175866}
+  - component: {fileID: 97175867}
   m_Layer: 0
   m_Name: Oven ( 1, -13 )
   m_TagString: Untagged
@@ -1271,6 +1299,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 97175865}
+--- !u!61 &97175867
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97175862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &102047286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1558,7 @@ GameObject:
   - component: {fileID: 103327846}
   - component: {fileID: 103327848}
   - component: {fileID: 103327849}
+  - component: {fileID: 103327850}
   m_Layer: 0
   m_Name: Oven ( 5, -1 )
   m_TagString: Untagged
@@ -1593,6 +1648,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 103327848}
+--- !u!61 &103327850
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103327845}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &128019994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,6 +1769,7 @@ GameObject:
   - component: {fileID: 138899611}
   - component: {fileID: 138899613}
   - component: {fileID: 138899614}
+  - component: {fileID: 138899615}
   m_Layer: 0
   m_Name: Oven ( 0, -9 )
   m_TagString: Untagged
@@ -1777,6 +1859,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 138899613}
+--- !u!61 &138899615
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138899610}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &150440475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2538,7 @@ GameObject:
   - component: {fileID: 177517029}
   - component: {fileID: 177517031}
   - component: {fileID: 177517032}
+  - component: {fileID: 177517033}
   m_Layer: 0
   m_Name: Oven ( -1, -18 )
   m_TagString: Untagged
@@ -2519,6 +2628,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 177517031}
+--- !u!61 &177517033
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177517028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &196258710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3562,6 +3697,7 @@ GameObject:
   - component: {fileID: 319862455}
   - component: {fileID: 319862457}
   - component: {fileID: 319862458}
+  - component: {fileID: 319862459}
   m_Layer: 0
   m_Name: Oven ( -5, -1 )
   m_TagString: Untagged
@@ -3651,6 +3787,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 319862457}
+--- !u!61 &319862459
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319862454}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &320993350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4442,6 +4604,7 @@ GameObject:
   - component: {fileID: 430023165}
   - component: {fileID: 430023167}
   - component: {fileID: 430023168}
+  - component: {fileID: 430023169}
   m_Layer: 0
   m_Name: Oven ( -4, -11 )
   m_TagString: Untagged
@@ -4531,6 +4694,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 430023167}
+--- !u!61 &430023169
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430023164}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &442414674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,6 +6405,7 @@ GameObject:
   - component: {fileID: 696664687}
   - component: {fileID: 696664689}
   - component: {fileID: 696664690}
+  - component: {fileID: 696664691}
   m_Layer: 0
   m_Name: Oven ( -5, -10 )
   m_TagString: Untagged
@@ -6305,6 +6495,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 696664689}
+--- !u!61 &696664691
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696664686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &700743250
 GameObject:
   m_ObjectHideFlags: 0
@@ -8198,6 +8414,7 @@ GameObject:
   - component: {fileID: 947389917}
   - component: {fileID: 947389919}
   - component: {fileID: 947389920}
+  - component: {fileID: 947389921}
   m_Layer: 0
   m_Name: Oven ( 2, -19 )
   m_TagString: Untagged
@@ -8287,6 +8504,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 947389919}
+--- !u!61 &947389921
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947389916}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &952082324
 GameObject:
   m_ObjectHideFlags: 0
@@ -9024,6 +9267,7 @@ GameObject:
   - component: {fileID: 1021305782}
   - component: {fileID: 1021305784}
   - component: {fileID: 1021305785}
+  - component: {fileID: 1021305786}
   m_Layer: 0
   m_Name: Oven ( 4, 0 )
   m_TagString: Untagged
@@ -9113,6 +9357,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 1021305784}
+--- !u!61 &1021305786
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021305781}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &1039616864
 GameObject:
   m_ObjectHideFlags: 0
@@ -9939,7 +10209,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 92cb525c512f34847ad1bbe19fd3d07e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10657,6 +10927,7 @@ GameObject:
   - component: {fileID: 1168854453}
   - component: {fileID: 1168854455}
   - component: {fileID: 1168854456}
+  - component: {fileID: 1168854457}
   m_Layer: 0
   m_Name: Oven ( -4, 0 )
   m_TagString: Untagged
@@ -10746,6 +11017,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 1168854455}
+--- !u!61 &1168854457
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168854452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &1190818614
 GameObject:
   m_ObjectHideFlags: 0
@@ -11706,6 +12003,7 @@ GameObject:
   - component: {fileID: 1294446714}
   - component: {fileID: 1294446716}
   - component: {fileID: 1294446717}
+  - component: {fileID: 1294446718}
   m_Layer: 0
   m_Name: Oven ( 4, -11 )
   m_TagString: Untagged
@@ -11795,6 +12093,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 1294446716}
+--- !u!61 &1294446718
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294446713}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &1306527925
 GameObject:
   m_ObjectHideFlags: 0
@@ -12307,6 +12631,7 @@ GameObject:
   - component: {fileID: 1333533171}
   - component: {fileID: 1333533173}
   - component: {fileID: 1333533174}
+  - component: {fileID: 1333533175}
   m_Layer: 0
   m_Name: Oven ( -1, -14 )
   m_TagString: Untagged
@@ -12396,6 +12721,32 @@ MonoBehaviour:
   cubeType: 0
   speed: 1
   _spriteRenderer: {fileID: 1333533173}
+--- !u!61 &1333533175
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333533170}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34042552, y: 0.34042552}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34042552, y: 0.34042552}
+  m_EdgeRadius: 0
 --- !u!1 &1343064119
 GameObject:
   m_ObjectHideFlags: 0
