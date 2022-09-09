@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a305add98d2ea1d448d5dc3d40e5bf10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
   allLevels: []
   fadeBackground: {fileID: 8946077087592632037}
   audioSource: {fileID: 8946077086469473996}
@@ -211,6 +212,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbd9c691a72ca444a7bc02e7a483fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels:
+  - Level_1
+  - Level_2
+  - Level_3
+  - Level_4
+  - Level_5
+  - Level_6
+  - Level_7
 --- !u!82 &8946077086469473996
 AudioSource:
   m_ObjectHideFlags: 0

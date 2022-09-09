@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/End.unity
     guid: 8103e148205ca594ebd8c81e38ba17ba
+  - enabled: 1
+    path: Assets/_Game/Scenes/Loose.unity
+    guid: 271de7f7b56219f448f1b41c5443e0d3
   m_configObjects: {}

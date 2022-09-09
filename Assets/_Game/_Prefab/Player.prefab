@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 9107029539699138389}
   whipstartPoint: {fileID: 9107029540271058759}
-  whipTime: 1
+  whipTime: 0.4
   animator: {fileID: 9107029540767986997}
   spriteRenderer: {fileID: 9107029540767986996}
   audioSource: {fileID: 9107029539699138388}

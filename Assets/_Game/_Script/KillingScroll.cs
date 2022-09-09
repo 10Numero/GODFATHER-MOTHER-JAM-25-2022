@@ -18,7 +18,7 @@ public class KillingScroll : MonoBehaviour
     [Button]
     public void testKillPlayer()
     {
-        if (Camera.main.transform.position.z > Player.Instance.transform.position.z + killingValue + tolerance)
+        if (Camera.main.transform.position.x > Player.Instance.transform.position.x + killingValue + tolerance)
         {
             SceneManager.LoadScene("Loose");
         }

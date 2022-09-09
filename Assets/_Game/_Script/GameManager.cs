@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private static GameManager instance;
 
-    private int currentLevel;
+    public int currentLevel;
     public List<string> allLevels;
 
     [SerializeField] private Image fadeBackground;
