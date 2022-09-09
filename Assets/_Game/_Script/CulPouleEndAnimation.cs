@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CulPouleEndAnimation : MonoBehaviour
 {
     [SerializeField] private Animator _culPouleAnimator;
     [SerializeField] private Transform _egg;
+    private bool noLoop;
+
     private void Awake()
     {
         _culPouleAnimator.enabled = false;
@@ -21,10 +24,13 @@ public class CulPouleEndAnimation : MonoBehaviour
         var selfPos = transform.position;
         selfPos = new Vector3(Mathf.RoundToInt(selfPos.x), Mathf.RoundToInt(selfPos.y), Mathf.RoundToInt(selfPos.z));
 
-        if (playerPos == selfPos)
+        if (playerPos == selfPos && !noLoop)
         {
+            noLoop = true;
             // _egg.gameObject.SetActive(false);
             _culPouleAnimator.enabled = true;
+
+            SceneManager.LoadScene("End");
         }
     }
 }
