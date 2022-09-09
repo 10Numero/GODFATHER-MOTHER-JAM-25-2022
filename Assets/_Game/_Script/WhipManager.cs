@@ -25,6 +25,7 @@ public class WhipManager : MonoBehaviour
     [SerializeField] private AudioClip whipHitOvenClip;
     [SerializeField] private AudioClip whipHitSugerClip;
     [SerializeField] private AudioClip whipHitJellyClip;
+    
 
     private void Start()
     {
