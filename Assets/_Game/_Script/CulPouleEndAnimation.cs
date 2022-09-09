@@ -19,10 +19,10 @@ public class CulPouleEndAnimation : MonoBehaviour
     {
         var playerPos = Player.Instance.transform.position;
         playerPos = new Vector3(Mathf.RoundToInt(playerPos.x), Mathf.RoundToInt(playerPos.y),
-            Mathf.RoundToInt(playerPos.z));
+            0);
 
         var selfPos = transform.position;
-        selfPos = new Vector3(Mathf.RoundToInt(selfPos.x), Mathf.RoundToInt(selfPos.y), Mathf.RoundToInt(selfPos.z));
+        selfPos = new Vector3(Mathf.RoundToInt(selfPos.x), Mathf.RoundToInt(selfPos.y), 0);
 
         if (playerPos == selfPos && !noLoop)
         {
