@@ -17,7 +17,7 @@ public abstract class ACube : MonoBehaviour
 
     protected Coroutine _coroutine;
 
-    [OnValueChanged("SelfUpdateSprite")]public eCubeType cubeType;
+    public eCubeType cubeType;
 
     public float speed = 1;
 
