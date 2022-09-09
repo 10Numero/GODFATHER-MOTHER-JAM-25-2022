@@ -2128,37 +2128,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[0]
-      value: Level_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[1]
-      value: Level_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[2]
-      value: Level_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[3]
-      value: Level_4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[4]
-      value: Level_5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[5]
-      value: Level_6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946077086469473999, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}
-      propertyPath: levels.Array.data[6]
-      value: Level_Scroll
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb3bd336d18eee40b9cb87c8a05f736, type: 3}

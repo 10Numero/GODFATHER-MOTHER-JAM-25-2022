@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private static GameManager instance;
 
-    private int currentLevel = 0;
+    private int currentLevel;
     public List<string> allLevels;
 
     [SerializeField] private Image fadeBackground;
@@ -80,12 +80,12 @@ public class GameManager : MonoBehaviour
             if (currentLevel == 5)
             {
                 audioSource.clip = bossMusic;
-                audioSource.Play();
             }
             else
             {
                 audioSource.clip = gameMusic;
             }
+                audioSource.Play();
             fadeBackground.DOColor(Color.clear, 1);
         }
     }
