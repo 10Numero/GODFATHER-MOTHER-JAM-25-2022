@@ -14,12 +14,16 @@ public class GameManager : MonoBehaviour
     public List<string> allLevels;
 
     [SerializeField] private Image fadeBackground;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip menuMusic;
+    [SerializeField] private AudioClip gameMusic;
+    [SerializeField] private AudioClip bossMusic;
 
     void Awake()
     {
         if (GameManager.instance != null)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -65,6 +69,8 @@ public class GameManager : MonoBehaviour
         if (currentLevel >= allLevels.Count)
         {
             SceneManager.LoadScene("MainMenu");
+            audioSource.clip = menuMusic;
+            audioSource.Play();
         }
         else
         {

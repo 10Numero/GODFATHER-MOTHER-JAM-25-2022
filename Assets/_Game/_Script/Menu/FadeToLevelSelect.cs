@@ -10,6 +10,7 @@ public class FadeToLevelSelect : MonoBehaviour
     [SerializeField] private GameObject startScreen;
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject selectScreen;
+    [SerializeField] private AudioSource audioSource;
     private bool toMenu = false;
 
     public void StartFadeSelect()
@@ -32,5 +33,6 @@ public class FadeToLevelSelect : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(backScreen.DOFade(1, .5f).SetEase(Ease.OutBounce));
         seq.Append(backScreen.DOFade(0, .1f)).onComplete += StartFadeSelect;
+        audioSource.Play();
     }
 }
