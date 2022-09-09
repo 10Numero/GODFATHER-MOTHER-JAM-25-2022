@@ -20,11 +20,15 @@ public class FollowCamSmooth : MonoBehaviour
 
     private void Awake()
     {
-        var pos = camCollider.transform.position;
-        var scale = camCollider.transform.localScale / 2;
+        if (camCollider)
+        {
+            var pos = camCollider.transform.position;
+            var scale = camCollider.transform.localScale / 2;
 
-        xLimit = new Vector2(pos.x - scale.x, pos.x + scale.x);
-        yLimit = new Vector2(pos.y - scale.y, pos.y + scale.y);
+            xLimit = new Vector2(pos.x - scale.x, pos.x + scale.x);
+            yLimit = new Vector2(pos.y - scale.y, pos.y + scale.y);
+        }
+        
     }
 
     void Update()
