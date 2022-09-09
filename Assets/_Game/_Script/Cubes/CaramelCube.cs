@@ -17,23 +17,17 @@ public class CaramelCube : MonoBehaviour
             whip.StopAllCoroutines();
             whip.EndAnimation();
             ACube cube = other.GetComponent<Player>().lastHittedCube;
-
-            /*switch (PlayerPosition)
-            {
-                case PlayerPosition.Top:
-
-                default:
-            }*/
-
-            
-
-            //other.transform.position = this.transform.position;
+           
             cube.CancelAction();
 
-            Debug.Log("caramel : " + transform.position);
-            Debug.Log("Player : " + other.transform.position);
 
-            if (other.transform.position.y > transform.position.y) // En haut
+
+
+            /*Debug.Log("caramel : " + transform.position);
+            Debug.Log("Player : " + other.transform.position);*/
+
+
+            /*if (other.transform.position.y > transform.position.y) // En haut
             {
                 Debug.Log("Joueur detecter en haut");
                 other.transform.position = new Vector3(transform.position.x,
@@ -63,8 +57,11 @@ public class CaramelCube : MonoBehaviour
                 other.transform.position = new Vector3(transform.position.x - 1,
                                                         transform.position.y,
                                                         other.transform.position.z);
-            }
-            
+            }*/
+
+
+
+
 
         }
         else if(other.GetComponent<SugarCube>() != null)
@@ -82,5 +79,64 @@ public class CaramelCube : MonoBehaviour
             Player.Instance.GetComponent<WhipManager>().StopAllCoroutines();
             Player.Instance.GetComponent<WhipManager>().EndAnimation();
         }*/
+
+
+
+
+
+        /*Debug.Log("caramel : " + transform.position);
+        Debug.Log("Player : " + other.transform.position);*/
+
+        Vector3 playerDirection = transform.position - Player.Instance.transform.position;
+
+        Debug.Log("PlayerDirection: " + playerDirection);
+
+        if (IsOnTheLeft(playerDirection))
+        {
+            Debug.Log("Left");
+
+            /*other.transform.position = new Vector3(transform.position.x - 1,
+                                                        transform.position.y,
+                                                        other.transform.position.z);*/
+        }
+        else if (!IsOnTheLeft(playerDirection))
+        {
+            Debug.Log("Right");
+
+            /*other.transform.position = new Vector3(transform.position.x + 1,
+                                                        transform.position.y,
+                                                        other.transform.position.z);*/
+        }
+        else if (IsOnTheTop(playerDirection))
+        {
+            Debug.Log("Top");
+
+            /*other.transform.position = new Vector3(transform.position.x,
+                                                        transform.position.y + 1,
+                                                        other.transform.position.z);*/
+        }
+        else if (!IsOnTheTop(playerDirection))
+        {
+            Debug.Log("Bottom");
+
+            /*other.transform.position = new Vector3(transform.position.x,
+                                                        transform.position.y - 1,
+                                                        other.transform.position.z);*/
+        }
+        
+
+    }
+
+    bool IsOnTheTop(Vector3 __dir)
+    {
+        var dir = Vector3.Cross(Player.Instance.transform.InverseTransformDirection(Vector3.left), __dir);
+        return dir.z >= 1;
+    }
+
+    bool IsOnTheLeft(Vector3 __dir)
+    {
+        var dir = Vector3.Cross(Player.Instance.transform.transform.up, __dir);
+        Debug.Log("return : " + (!(dir.z <= 1)));
+        return dir.z <= -1;
     }
 }
