@@ -12958,6 +12958,7 @@ MonoBehaviour:
   cubeType: 2
   speed: 5
   _spriteRenderer: {fileID: 1564753919}
+  jellyTrail: {fileID: 1204470550905516442, guid: b49662d57b2131e44814b0770ef164ce, type: 3}
 --- !u!212 &1564753919
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15062,6 +15063,7 @@ MonoBehaviour:
   cubeType: 2
   speed: 5
   _spriteRenderer: {fileID: 1930238621}
+  jellyTrail: {fileID: 1204470550905516442, guid: b49662d57b2131e44814b0770ef164ce, type: 3}
 --- !u!212 &1930238621
 SpriteRenderer:
   m_ObjectHideFlags: 0
