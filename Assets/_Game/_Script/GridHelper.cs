@@ -36,6 +36,7 @@ public class GridHelper : MonoBehaviour
     {
         var pos = Vector3.zero;
         
+        
         switch (__boxType)
         {
             case ACube.eCubeType.Oven:
@@ -59,11 +60,26 @@ public class GridHelper : MonoBehaviour
 
                 // Got decimal, floor & ceil are enough to get 2 dif pos next to each other
                 if (!int.TryParse(pos.x.ToString(CultureInfo.InvariantCulture), out var value))
-                    return (new Vector3(Mathf.Floor(pos.x), Mathf.Floor(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
-                
-                
+                {
+                    
+                    var left = IsOnTheLeft(Player.Instance.transform.position - __hookedBox.position);
+                    
+                    if(!left)
+                        return (new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
+                    else
+                        return (new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z), new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), pos.z));
+                }
+
+
                 if (!int.TryParse(pos.y.ToString(CultureInfo.InvariantCulture), out var valueZ))
-                    return (new Vector3(Mathf.Floor(pos.x), Mathf.Floor(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
+                {
+                    var top = IsOnTheTop(Player.Instance.transform.position - __hookedBox.position);
+
+                    if(!top)
+                        return (new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z), new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), pos.z));
+                    else
+                        return (new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), pos.z), new Vector3(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y), pos.z));
+                }
 
  
                 // Got int, have to split the pos myself
@@ -97,7 +113,6 @@ public class GridHelper : MonoBehaviour
     bool IsOnTheLeft(Vector3 __dir)
     {
         var dir = Vector3.Cross(Player.Instance.transform.transform.up, __dir);
-        Debug.Log("return : " + (!(dir.z <= 1)));
         return dir.z <= -1;
 
     }
@@ -115,8 +130,6 @@ public class GridHelper : MonoBehaviour
 
     bool IsEqualY(float __value)
     {
-
-        Debug.Log("y : " + (Math.Abs(__value - Player.Instance.transform.transform.position.y) < 0.1f));
         return Math.Abs(__value - Player.Instance.transform.transform.position.y) < 0.1f;
     }
 

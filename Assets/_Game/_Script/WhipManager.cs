@@ -65,6 +65,8 @@ public class WhipManager : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") != 0)
         {
+            CameraShake.Instance.Shake();
+            
             if(Input.GetAxis("Horizontal") > 0)
             {
                 direction = new Vector2(1, 0);
