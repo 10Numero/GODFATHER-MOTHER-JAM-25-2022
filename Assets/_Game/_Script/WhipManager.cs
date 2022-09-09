@@ -65,8 +65,6 @@ public class WhipManager : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") != 0)
         {
-            CameraShake.Instance.Shake();
-            
             if(Input.GetAxis("Horizontal") > 0)
             {
                 direction = new Vector2(1, 0);
@@ -92,6 +90,8 @@ public class WhipManager : MonoBehaviour
 
         if (hasInput)
         {
+            CameraShake.Instance?.Shake();
+            
             _raycastHit = Physics2D.Raycast(transform.position, direction);
             if (_raycastHit.collider != null)
             {
