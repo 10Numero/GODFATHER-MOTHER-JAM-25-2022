@@ -12,7 +12,8 @@ public abstract class ACube : MonoBehaviour
         Oven,
         Sugar,
         Jelly,
-        Caramel
+        Caramel,
+        Egg
     }
 
     protected Coroutine _coroutine;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 
 public class KillingScroll : MonoBehaviour
 {
@@ -19,11 +20,7 @@ public class KillingScroll : MonoBehaviour
     {
         if (Camera.main.transform.position.z > Player.Instance.transform.position.z + killingValue + tolerance)
         {
-            Debug.Log("Player killed");
-        }
-        else
-        {
-            Debug.Log("Player safe");
+            SceneManager.LoadScene("Loose");
         }
     }
 }
