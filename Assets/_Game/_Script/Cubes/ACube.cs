@@ -30,7 +30,7 @@ public abstract class ACube : MonoBehaviour
         if(_spriteRenderer)
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
         
-        SelfUpdateSprite();
+        // SelfUpdateSprite();
 
         speed = 5;
     }
@@ -58,9 +58,4 @@ public abstract class ACube : MonoBehaviour
             _spriteRenderer.sprite = __value;
     }
     
-    private void SelfUpdateSprite()
-    {
-        if(_spriteRenderer)
-            _spriteRenderer.sprite ??= SO_TileSpriteHolder.Instance.GetSprite(cubeType);
-    }
 }

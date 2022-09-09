@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private static GameManager instance;
 
-    private int currentLevel = 0;
+    private int currentLevel;
     public List<string> allLevels;
 
     [SerializeField] private Image fadeBackground;
@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+        
+        Screen.SetResolution(256, 224, true);
     }
 
     private void Start()
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitFade()
     {
         yield return new WaitForSeconds(1);
-        
+
         if (currentLevel >= allLevels.Count)
         {
             SceneManager.LoadScene("MainMenu");
@@ -75,9 +77,17 @@ public class GameManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(allLevels[currentLevel]);
+            if (currentLevel == 5)
+            {
+                audioSource.clip = bossMusic;
+            }
+            else
+            {
+                audioSource.clip = gameMusic;
+            }
+                audioSource.Play();
+            fadeBackground.DOColor(Color.clear, 1);
         }
-        fadeBackground.DOColor(Color.clear, 1);
-
     }
 
 

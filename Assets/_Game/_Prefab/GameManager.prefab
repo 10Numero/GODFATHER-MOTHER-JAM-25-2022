@@ -195,6 +195,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allLevels: []
   fadeBackground: {fileID: 8946077087592632037}
+  audioSource: {fileID: 8946077086469473996}
+  menuMusic: {fileID: 8300000, guid: 4a2edd8784a0eee4cb5150003902f841, type: 3}
+  gameMusic: {fileID: 8300000, guid: 572ebbd44a046574e9b265d37903ff0d, type: 3}
+  bossMusic: {fileID: 8300000, guid: db2ce2d06d6ae4d44b400ba900da2ff8, type: 3}
 --- !u!114 &8946077086469473999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,11 +221,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 572ebbd44a046574e9b265d37903ff0d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4a2edd8784a0eee4cb5150003902f841, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.669
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
